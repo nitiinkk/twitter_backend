@@ -30,7 +30,7 @@ class TweetRepository {
 
     async update(tweetId, data) {
         try {
-         const tweet = Tweet.findByIdAndUpdate(tweetId, data, {new: true});
+         const tweet = Tweet.findByIdAndUpdate(tweetId, data, {new: true}).lean(); //lean return a js object instead of mongodb object
          return tweet;   
         } catch (error) {
             console.log(error);
@@ -40,6 +40,15 @@ class TweetRepository {
     async destroy(id) {
         try {
          const tweet = Tweet.findByIdAndRemove(id);
+         return tweet;   
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    
+    async getAll(offset, limit) {
+        try {
+         const tweet = Tweet.find().skip(offset).limit(limit); //offset and limit
          return tweet;   
         } catch (error) {
             console.log(error);

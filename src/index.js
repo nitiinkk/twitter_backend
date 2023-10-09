@@ -16,5 +16,7 @@ app.listen(3000, async () => {
     const comment = await Comment.create({content: 'new comment'});
     tweet.comments.push(comment);
     tweet.save();
+    //const tweet = await tweetRepo.getAll(0, 1)
+    console.log("Email domain for current user is: " + tweet.domain);
     console.log(tweet);
 })
