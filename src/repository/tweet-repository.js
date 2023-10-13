@@ -1,45 +1,14 @@
 import Tweet from '../models/tweet.js';
+import CrudRepository from './crud-repository.js';
 
-class TweetRepository {
-    async create(data) {
-        try {
-            const tweet = Tweet.create(data);
-            return tweet;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    async get(id) {
-        try {
-            const tweet = Tweet.findById(id);
-            return tweet;
-        } catch (error) {
-            console.log(error);
-        }
+class TweetRepository extends CrudRepository {
+    constructor() {
+        super(Tweet);
     }
 
     async getWithComments(id) {
         try {
             const tweet = Tweet.findById(id).populate({ path: 'comments' });
-            return tweet;
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    // async update(tweetId, data) {
-    //     try {
-    //      const tweet = Tweet.findByIdAndUpdate(tweetId, data, {new: true}).lean(); //lean return a js object instead of mongodb object
-    //      return tweet;   
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // }
-
-    async destroy(id) {
-        try {
-            const tweet = Tweet.findByIdAndRemove(id);
             return tweet;
         } catch (error) {
             console.log(error);
