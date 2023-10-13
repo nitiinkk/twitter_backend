@@ -1,7 +1,8 @@
 {
   "name": "twitter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Twitter Application that tweets.",
+  "type": "module",
   "scripts": {
     "start": "npx nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
