@@ -1,16 +1,16 @@
-import multer  from "multer";
-import multers3 from "multer-s3";
+import multer from 'multer';
+import multers3 from 'multer-s3';
 import aws from 'aws-sdk';
 import dotenv from 'dotenv';
 
 dotenv.config();
 aws.config.update({
     region: process.env.AWS_REGION,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     accessKeyId: process.env.ACCESS_KEY_ID
-})
+});
 
-const s3 = new aws.s3();
+const s3 = new aws.S3();
 const upload = multer({
     sotrage: multers3({
         s3: s3,
